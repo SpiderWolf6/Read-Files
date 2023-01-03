@@ -1,0 +1,32 @@
+# Import the required libraries
+import os
+
+# Define the location of the directory
+# path = r""
+
+# Change the directory
+# os.chdir(path)
+
+# Create empty list for future use
+temp=[]
+
+# insert file path
+findpath("")
+
+# using main filepath, iterate and create filepaths for individual files
+def findpath(path):
+    for dirpath, dirname, filename in os.walk(path):
+        for f in filename:
+            path_new = os.path.join(dirpath, f)
+            if f.endswith(''):
+                name = f
+                read_files(path_new, name) # pass new filepath into read function
+
+def read_files(file_path, name):
+   with open(file_path, 'r') as file:
+    d[name] = pd.read_csv(file_path)
+    temp.append(d[name]) # append individual DataFrame to list
+    
+    
+final = pd.concat(temp) # combine smaller DataFrames within list to create compiled, larger DataFrame
+final
